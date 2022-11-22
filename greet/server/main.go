@@ -13,6 +13,7 @@ var addr string = "0.0.0.0:50051"
 
 type Server struct {
 	pb.GreetServiceServer
+	pb.CalculatorServiceServer
 }
 
 func main() {
@@ -24,6 +25,7 @@ func main() {
 	log.Printf("Listening in %s\n", addr)
 	s := grpc.NewServer()
 	pb.RegisterGreetServiceServer(s, &Server{})
+	pb.RegisterCalculatorServiceServer(s, &Server{})
 
 	if err = s.Serve(lis); err != nil {
 		log.Fatal("Failed to serve")

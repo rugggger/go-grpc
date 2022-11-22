@@ -18,6 +18,8 @@ func main() {
 	defer conn.Close()
 
 	client := pb.NewGreetServiceClient(conn)
+	clientCalc := pb.NewCalculatorServiceClient(conn)
 	doGreet(client)
+	doCalc(clientCalc)
 
 }
