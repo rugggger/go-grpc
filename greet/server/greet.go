@@ -14,11 +14,3 @@ func (s *Server) Greet(ctx context.Context, in *pb.GreetRequest) (*pb.GreetRespo
 	}, nil
 
 }
-
-func (s *Server) Sum(ctx context.Context, in *pb.SumRequest) (*pb.SumResponse, error) {
-	log.Printf("Greet function was envoked with %v", in)
-	return &pb.SumResponse{
-		Result: int64(in.A + in.B),
-	}, nil
-
-}
