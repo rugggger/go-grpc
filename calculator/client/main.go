@@ -19,5 +19,6 @@ func main() {
 
 	clientCalc := pb.NewCalculatorServiceClient(conn)
 	doCalc(clientCalc)
+	doFactor(clientCalc)
 
 }

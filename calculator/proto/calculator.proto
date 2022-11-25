@@ -14,7 +14,16 @@ message SumResponse {
     int64 result = 1;
 }
 
+message FactorRequest {
+    int64 number = 1;
+}
+
+message FactorResponse {
+    int32 factor = 1;
+}
+
 
 service CalculatorService {
     rpc Sum (SumRequest) returns (SumResponse);
+    rpc Factor (FactorRequest) returns (stream FactorResponse);
 }
