@@ -21,5 +21,7 @@ func main() {
 	doCalc(clientCalc)
 	doFactor(clientCalc)
 	doMax(clientCalc)
+	doSqrt(clientCalc, 243)
+	doSqrt(clientCalc, -243)
 
 }
