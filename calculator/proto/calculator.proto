@@ -22,8 +22,17 @@ message FactorResponse {
     int32 factor = 1;
 }
 
+message MaxRequest {
+    int32 num = 1;
+}
+
+message MaxResponse {
+    int32 num = 1;
+}
+
 
 service CalculatorService {
     rpc Sum (SumRequest) returns (SumResponse);
     rpc Factor (FactorRequest) returns (stream FactorResponse);
+    rpc Max (stream MaxRequest) returns (stream MaxResponse);
 }
