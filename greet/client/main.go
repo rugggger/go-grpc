@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"time"
 
 	pb "github.com/rugggger/go-grpc/greet/proto"
 	"google.golang.org/grpc"
@@ -19,6 +20,9 @@ func main() {
 
 	client := pb.NewGreetServiceClient(conn)
 	doGreet(client)
-	doGreetManyTimes(client)
+	// doGreetManyTimes(client)
+	doGreet2(client, time.Second*3)
+	doGreet2(client, time.Second*1)
+	doGreet2(client, time.Second*5)
 
 }
