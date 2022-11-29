@@ -6,13 +6,26 @@ import (
 
 	pb "github.com/rugggger/go-grpc/greet/proto"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
+	"google.golang.org/grpc/credentials"
 )
 
 var addr string = "localhost:50051"
 
 func main() {
-	conn, err := grpc.Dial(addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	tls := true
+	opts := []grpc.DialOption{}
+
+	if tls {
+		certfile := "ssl/ca.crt"
+
+		creds, err := credentials.NewClientTLSFromFile(certfile, "")
+		if err != nil {
+			log.Fatalf("Can't dialup %v\n", err)
+		}
+		opts = append(opts, grpc.WithTransportCredentials(creds))
+
+	}
+	conn, err := grpc.Dial(addr, opts...)
 	if err != nil {
 		log.Fatalf("Failed to connect %v\n", err)
 	}
